@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  bot-server:
+    build: .
+    volumes:
+      - ".:/usr/src/app"
+      - "/usr/src/app/node_modules"
+    ports:
+      - "3000:3000"
