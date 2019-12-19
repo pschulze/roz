@@ -16,7 +16,7 @@ dotenv.config();
 const adapter = new WebexAdapter({
   access_token: process.env.WEBEX_TEAMS_BOT_ACCESS_TOKEN,
   enable_incomplete: true,
-  public_address: 'localhost:3000',
+  public_address: process.env.PUBLIC_ADDRESS,
 });
 
 const controller = new Botkit({
