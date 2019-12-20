@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import { listPrs } from './github';
+import { runPipeline, statusPipeline } from './gocd';
 
 const { WebexAdapter } = require('botbuilder-adapter-webex');
 const { Botkit } = require('botkit');
@@ -22,7 +23,8 @@ const controller = new Botkit({
 });
 
 controller.hears(new RegExp(/^github prs /), 'message', listPrs);
-
+controller.hears(new RegExp(/^gocd run /),'message', runPipeline)
+controller.hears(new RegExp(/^gocd status /),'message', statusPipeline)
 controller.hears(new RegExp(/^tv /), 'message', async(bot : any, message : any) => {
 
 });
