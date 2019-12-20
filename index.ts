@@ -4,9 +4,9 @@ const { WebexAdapter } = require('botbuilder-adapter-webex');
 const { Botkit } = require('botkit');
 
 dotenv.config();
-
+var tools : any;
 if (process.env.ENABLE_EXT_DISPLAY == 'true'){
-  require('./display');
+  tools = require('./display');
 }
 
 const adapter = new WebexAdapter({
@@ -26,4 +26,4 @@ async function myFunc() {
   await bot.say("I'm a little teapot");
 };
 
-//myFunc();
+let timer = setInterval(() => tools.testFunc(), 3000);

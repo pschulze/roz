@@ -15,9 +15,24 @@ app.get('/display', (req, res) => {
   res.render('pages/display');
 });
 
+app.get('/testroute', (req, res) => {
+  res.send('test route');
+})
+
 io.on('connection', function (socket : Socket) {
   socket.emit('news', { hello: 'world' });
   socket.on('my other event', function (data: any) {
     console.log(data);
   });
+
+  socket.on('change view', (data : any) => {
+    console.log("change view called");
+  })
 });
+
+function testFunc(){
+  console.log("Test called");
+  io.emit('change view');
+}
+
+module.exports = {testFunc}
