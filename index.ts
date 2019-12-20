@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import { listPrs } from './github';
 
 const { WebexAdapter } = require('botbuilder-adapter-webex');
 const { Botkit } = require('botkit');
@@ -20,10 +21,8 @@ const controller = new Botkit({
   // ... other configuration options
 });
 
-async function myFunc() {
-  const bot = await controller.spawn();
-  await bot.startConversationInRoom(process.env.ROZBOT_ROOM_ID);
-  await bot.say("I'm a little teapot");
-};
+controller.hears(new RegExp(/^github prs /), 'message', listPrs);
 
-//myFunc();
+controller.hears(new RegExp(/^tv /), 'message', async(bot : any, message : any) => {
+
+});

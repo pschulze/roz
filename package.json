@@ -15,8 +15,9 @@
     "botbuilder-adapter-webex": "^1.0.4",
     "botkit": "^4.6.1",
     "dotenv": "^8.2.0",
-    "ejs": "^3.0.1",
     "express": "^4.17.1",
+    "github-api": "^3.3.0",
+    "ejs": "^3.0.1",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
