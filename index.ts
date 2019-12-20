@@ -6,9 +6,9 @@ const { WebexAdapter } = require('botbuilder-adapter-webex');
 const { Botkit } = require('botkit');
 
 dotenv.config();
-
+var tools : any;
 if (process.env.ENABLE_EXT_DISPLAY == 'true'){
-  require('./display');
+  tools = require('./display');
 }
 
 const adapter = new WebexAdapter({
@@ -27,4 +27,8 @@ controller.hears(new RegExp(/^gocd run /),'message', runPipeline)
 controller.hears(new RegExp(/^gocd status /),'message', statusPipeline)
 controller.hears(new RegExp(/^tv /), 'message', async(bot : any, message : any) => {
 
+process.env.VIDEO_URL = "https://www.youtube.com/embed/dQw4w9WgXcQ";
+let timer = setInterval(() => 
+  tools.testFunc({type: 'video', url: 'abc'}), 5000
+);
 });

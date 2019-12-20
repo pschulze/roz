@@ -1,6 +1,7 @@
 </body>
 <footer>
   <script src="/socket.io/socket.io.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script>
     var socket = io();
     socket.on('connect', function(data) {
@@ -9,6 +10,17 @@
     socket.on('news', function (data) {
       console.log(data);
       socket.emit('my other event', { my: 'data' });
+    });
+
+    socket.on('change view', function(data) {
+      console.log("got change view event");
+      console.log(data.type);
+      if (data.type == 'analytics'){
+        console.log("Redirecting to analytics");
+        window.location.href = '/analytics';
+      } else if (data.type == 'video'){
+        window.location.href = '/video';
+      }
     });
   </script>
 </footer>
