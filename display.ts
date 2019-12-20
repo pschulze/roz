@@ -15,8 +15,8 @@ app.get('/display', (req, res) => {
   res.render('pages/display');
 });
 
-app.get('/testroute', (req, res) => {
-  res.send('test route');
+app.get('/analytics', (req, res) => {
+  res.render('pages/analytics');
 })
 
 io.on('connection', function (socket : Socket) {
