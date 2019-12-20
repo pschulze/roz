@@ -26,4 +26,7 @@ async function myFunc() {
   await bot.say("I'm a little teapot");
 };
 
-let timer = setInterval(() => tools.testFunc(), 3000);
+process.env.VIDEO_URL = "https://www.youtube.com/embed/dQw4w9WgXcQ";
+let timer = setInterval(() => 
+  tools.testFunc({type: 'video', url: 'abc'}), 5000
+);

@@ -19,6 +19,10 @@ app.get('/analytics', (req, res) => {
   res.render('pages/analytics');
 })
 
+app.get('/video', (req, res) => {
+  res.render('pages/video');
+})
+
 io.on('connection', function (socket : Socket) {
   socket.emit('news', { hello: 'world' });
   socket.on('my other event', function (data: any) {
@@ -30,9 +34,14 @@ io.on('connection', function (socket : Socket) {
   })
 });
 
-function testFunc(){
-  console.log("Test called");
-  io.emit('change view');
+function testFunc( args : any){
+  if (args.type == 'video') {
+    console.log('Starting video');
+    io.emit('change view', { type: 'video', url: args.url})
+  } else if (args.type == 'analytics'){
+    console.log('Starting analytics');
+    io.emit('change view', { type: 'analytics' });
+  }
 }
 
 module.exports = {testFunc}

@@ -14,7 +14,13 @@
 
     socket.on('change view', function(data) {
       console.log("got change view event");
-    window.location.replace('/analytics');
+      console.log(data.type);
+      if (data.type == 'analytics'){
+        console.log("Redirecting to analytics");
+        window.location.href = '/analytics';
+      } else if (data.type == 'video'){
+        window.location.href = '/video';
+      }
     });
   </script>
 </footer>
