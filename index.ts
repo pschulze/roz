@@ -1,4 +1,3 @@
-import express from 'express';
 import dotenv from 'dotenv';
 import { listPrs } from './github';
 
@@ -7,12 +6,9 @@ const { Botkit } = require('botkit');
 
 dotenv.config();
 
-// const app = express();
-// const port = 3000;
-
-// app.get('/', (req, res) => res.send('Hello World!'));
-
-// app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+if (process.env.ENABLE_EXT_DISPLAY == 'true'){
+  require('./display');
+}
 
 const adapter = new WebexAdapter({
   access_token: process.env.WEBEX_TEAMS_BOT_ACCESS_TOKEN,
@@ -27,5 +23,6 @@ const controller = new Botkit({
 
 controller.hears(new RegExp(/^github prs /), 'message', listPrs);
 
- controller.hears(new RegExp(/^tv /), 'message', async(bot : any, message : any) => {
- });
+controller.hears(new RegExp(/^tv /), 'message', async(bot : any, message : any) => {
+
+});
