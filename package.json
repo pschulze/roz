@@ -6,6 +6,7 @@
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node out/index.js",
+    "watch": "nodemon out/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,11 +15,16 @@
     "botbuilder-adapter-webex": "^1.0.4",
     "botkit": "^4.6.1",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
     "@types/node": "^12.12.21",
-    "typescript": "^3.7.3"
+    "@types/socket.io": "^2.1.4",
+    "nodemon": "^2.0.2",
+    "typescript": "^3.7.3",
+    "webpack": "^4.41.4"
   }
 }
